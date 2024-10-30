@@ -1,0 +1,20 @@
+<p-panel *ngIf="character" [header]="character.name">
+  <div class="character-detail">
+    <p-avatar 
+      [image]="character.image || 'https://via.placeholder.com/100'" 
+      shape="circle" 
+      size="large"
+      class="character-avatar"
+    ></p-avatar>
+    <div class="character-info">
+      <p><strong>Name:</strong> {{ character.name }}</p>
+      <p><strong>House:</strong> {{ character.house || 'Unknown' }}</p>
+      <p><strong>Actor:</strong> {{ character.actor || 'Unknown' }}</p>
+      <p><strong>Ancestry:</strong> {{ character.ancestry || 'Unknown' }}</p>
+      <p><strong>Wand:</strong> {{ character.wand.wood || 'Unknown' }} wood, {{ character.wand.core || 'Unknown' }} core</p>
+      <p><strong>Patronus:</strong> {{ character.patronus || 'Unknown' }}</p>
+      <p><strong>Eye Colour:</strong> {{ character.eyeColour || 'Unknown' }}</p>
+      <p><strong>Hair Colour:</strong> {{ character.hairColour || 'Unknown' }}</p>
+    </div>
+  </div>
+</p-panel>

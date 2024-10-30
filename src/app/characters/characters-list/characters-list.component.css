@@ -1,0 +1,58 @@
+.character-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  p-card {
+    flex: 1 1 300px;
+    max-width: 360px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .character-image {
+    width: 100%;
+    height: 300px; /* Define uma altura fixa para normalizar o tamanho */
+    object-fit: contain; /* Redimensiona a imagem para caber no espaço sem cortes */
+    border-radius: 8px;
+    background-color: #f0f0f0; /* Cor de fundo para imagens menores */
+  }
+
+  p-badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  p-button.view-button {
+    color: #6c757d;
+  }
+  
+  p-button.favorite-button {
+    color: #007bff;
+  }
+  .card-footer {
+    display: flex;
+    gap: 8px;
+    justify-content: center; /* Centraliza os botões no rodapé */
+    margin-top: 16px;
+  }
+
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    p-card {
+      flex: 1 1 100%; /* Cada card ocupará 100% da largura em telas menores */
+      max-width: 100%; /* Remover limite de largura em telas pequenas */
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1200px) {
+    p-card {
+      flex: 1 1 45%; /* Cada card ocupará cerca de 45% da largura em tablets */
+    }
+  }
+  

@@ -1,0 +1,15 @@
+.mr-2 {
+    margin-right: 0.5rem;
+  }
+  
+  .p-toolbar-group-center {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .p-toolbar-group-end {
+    display: flex;
+    justify-content: flex-end;
+  }
+  

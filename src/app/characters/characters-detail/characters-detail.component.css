@@ -1,0 +1,14 @@
+.character-detail {
+    display: flex;
+    align-items: center;
+  }
+  
+  .character-avatar {
+    margin-right: 20px;
+  }
+  
+  .character-info p {
+    margin: 5px 0;
+    font-size: 1.1em;
+  }
+  

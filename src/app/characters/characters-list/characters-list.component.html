@@ -1,0 +1,56 @@
+<app-toolbar (searchTermChange)="onSearchTermChange($event)"></app-toolbar>
+
+<div class="character-cards">
+  <p-card *ngFor="let character of filteredCharacters" [header]="character.name" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+      <img [src]="character.image || 'https://via.placeholder.com/360x180'" alt="{{character.name}}" class="character-image" />
+    </ng-template>
+
+    <!-- Display Badges -->
+    <div class="badges">
+      <p-badge *ngIf="character.house" [value]="character.house" [severity]="getHouseBadgeColor(character.house)"></p-badge>
+      <p-badge *ngIf="character.ancestry" [value]="character.ancestry" severity="info"></p-badge>
+      <p-badge *ngIf="character.species" [value]="character.species" severity="warning"></p-badge>
+      <p-badge *ngIf="character.alive" value="Alive" severity="success"></p-badge>
+      <p-badge *ngIf="!character.alive" value="Deceased" severity="danger"></p-badge>
+    </div>
+
+    <p><strong>House:</strong> {{ character.house || 'No House' }}</p>
+    <p><strong>Actor:</strong> {{ character.actor || 'Unknown Actor' }}</p>
+    <p><strong>Ancestry:</strong> {{ character.ancestry || 'Unknown' }}</p>
+    <p><strong>Patronus:</strong> {{ character.patronus || 'None' }}</p>
+
+    <!-- Componente de Rating -->
+    <p-rating [(ngModel)]="characterRatings[character.id]" (onRate)="setRating(character.id, $event.value)" stars="5" cancel="false"></p-rating>
+
+    <ng-template pTemplate="footer">
+      <div class="card-footer">
+        <p-button 
+          icon="pi pi-eye" 
+          [rounded]="true" 
+          [severity]="isViewed(character.id) ? 'info' : 'secondary'" 
+          (click)="openDialog(character)">
+        </p-button>
+
+        <p-button 
+          icon="pi pi-heart" 
+          [rounded]="true" 
+          [severity]="isFavorite(character.id) ? 'help' : 'secondary'" 
+          (click)="toggleFavorite(character.id)">
+        </p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+
+<!-- Modal Dialog -->
+<p-dialog [(visible)]="displayDialog" header="Character Details" [modal]="true" [style]="{ width: '400px' }" [closable]="true" (onHide)="closeDialog()">
+  <div *ngIf="selectedCharacter">
+    <img [src]="selectedCharacter.image || 'https://via.placeholder.com/400x200'" alt="{{selectedCharacter.name}}" style="width: 100%; border-radius: 8px; margin-bottom: 20px;" />
+    <h3>{{ selectedCharacter.name }}</h3>
+    <p><strong>House:</strong> {{ selectedCharacter.house || 'No House' }}</p>
+    <p><strong>Actor:</strong> {{ selectedCharacter.actor || 'Unknown Actor' }}</p>
+    <p><strong>Ancestry:</strong> {{ selectedCharacter.ancestry || 'Unknown' }}</p>
+    <p><strong>Patronus:</strong> {{ selectedCharacter.patronus || 'None' }}</p>
+  </div>
+</p-dialog>
