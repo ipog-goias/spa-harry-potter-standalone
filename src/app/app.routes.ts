@@ -6,5 +6,16 @@ export const routes: Routes = [
       title: 'Characters of Harry Potter',
       loadChildren: () => import('./characters/characters.routes').then(r => r.routes)
     },
-    //{ path: '', redirectTo: 'characters', pathMatch: 'full' }
-];
+    {
+      path: 'dashboard',
+      title: 'Dashboard of Harry Potter',
+      loadComponent: () => import('./characters/characters-dashboard/characters-dashboard.component').then(c => c.CharactersDashboardComponent)
+    },
+    {
+      path: 'datatable',
+      title: 'Datatable of Harry Potter',
+      loadComponent: () => import('./characters/characters-content-list-filter/characters-content-list-filter.component').then(c => c.CharactersContentListFilterComponent)
+    },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+
+]; 
